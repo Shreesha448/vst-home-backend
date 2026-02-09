@@ -5,7 +5,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "echo \"No tests yet – skipping\" && exit 0"
   },
   "keywords": [],
   "author": "",
