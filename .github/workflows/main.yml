@@ -26,7 +26,6 @@ jobs:
       with:
         node-version: 18
         cache: npm
-        cache-dependency-path: vst-home-backend/package-lock.json
 
     ################################
     # INSTALL & TEST
