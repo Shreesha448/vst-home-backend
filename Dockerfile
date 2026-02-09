@@ -1,5 +1,6 @@
 # Use Node.js image
 FROM node:18-alpine
+RUN apk update && apk upgrade --no-cache
 
 WORKDIR /app
 
