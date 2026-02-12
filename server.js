@@ -4,20 +4,31 @@ import axios from "axios";
 import Parser from "rss-parser";
 import path from "path";
 import { fileURLToPath } from "url";
-import poshRoutes from "./routes/posh-routes.js";
+// import poshRoutes from "./routes/posh-routes.js";
 
 import authRoutes from "./auth-routes.js";
 import {
-
   authenticateToken,
   generateSessionToken,
   storeSession,
   removeSession,
+  getSession,
 } from "./middleware/auth.js";
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT =  3000;
 const FEED_URL = process.env.FEED_URL || "https://venturesoft.ai/feed/";
+
+// RSS parser config
+const parser = new Parser({
+  requestOptions: {
+    headers: {
+      "User-Agent": "VentureSoftRSS/1.0 (+https://venturesoft.ai)",
+      "Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.8",
+    },
+    timeout: 10000,
+  },
+});
 
 /* ------------------------------------------------------------------ */
 /* 🔧 REQUIRED FOR STATIC FILES (ES MODULE FIX)                         */
@@ -157,7 +168,7 @@ app.get(["/api/rss", "/api/blogs"], async (req, res) => {
   }
 });
 
-app.use("/api/posh", poshRoutes);
+// app.use("/api/posh", poshRoutes);
 
 
 /* ------------------------------------------------------------------ */
